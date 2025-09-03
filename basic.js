@@ -21,6 +21,17 @@ app.post("/", (req, res) => {
   res.send(roadmap);
 });
 
+app.delete("/:id", (req, res) => {
+    const { id } = req.params;
+
+    const index = roadmap.findIndex((item) => item.id === id);
+    if (index !== -1) {
+        roadmap.splice(index, 1);
+    }
+
+    res.send(roadmap);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
